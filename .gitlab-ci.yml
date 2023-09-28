@@ -1,0 +1,15 @@
+stages:
+  - quality
+
+quality:
+  stage: quality
+  image:
+    name: sonarsource/sonar-scanner-cli:latest
+    entrypoint: [""]
+  tags:
+    - quality
+  variables:
+    SONAR_TOKEN: $SONAR_TOKEN
+    SONAR_HOST_URL: $SONAR_HOST_URL
+  script: 
+    - sonar-scanner -Dsonar.qualitygate.wait=true
